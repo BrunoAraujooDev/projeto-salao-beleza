@@ -1,0 +1,11 @@
+{
+  "servicos": [
+    { "id": 1, "title": "Corte cabelo - Masculino" },
+    { "id": 2, "title": "Barba"  },
+    { "id": 3, "title": "Corte cabelo - Masculino Completo"  },
+    { "id": 4, "title": "Corte cabelo - feminino"  },
+    { "id": 5, "title": "Unha pé + mão"  },
+    { "id": 6, "title": "Pintura no cabelo"  },
+    { "id": 7, "title": "Relaxamento"  }
+  ]
+}

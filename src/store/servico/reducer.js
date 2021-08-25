@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 const reducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
 
-        case SERVICOS.GETALL:
+        case SERVICOS.getAll:
             state.all = action.servicos;
             return state;
         default:

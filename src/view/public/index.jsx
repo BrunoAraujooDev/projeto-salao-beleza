@@ -3,19 +3,15 @@ import Home from "./home";
 import PublicLayout from "../../components/public/layout";
 
 
-const Public = () => {
-
-    (
-    <PublicLayout>
+const Public = () => (
 
     <Router>
-        
-        <Home path="/" />
-    
+        <PublicLayout path="/">
+            <Home path="/" />
+        </PublicLayout>
     </Router>
-    </PublicLayout>
-    )
+)
 
-}
+
 
 export default Public;

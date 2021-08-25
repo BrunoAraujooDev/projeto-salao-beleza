@@ -7,14 +7,13 @@ import Client from "./view/client"
 
 const Routers = () => {
     return (
-
         <Router>
             <Public path="/*" />
             <Admin path="/admin/*" />
             <Client path="/client/*" />
         </Router>
-    )
+    );
+};
 
-}
 
 export default Routers;
