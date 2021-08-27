@@ -22,7 +22,7 @@ const NavBarComponent = (props) => {
   return (
     <div>
       <Navbar  expand="md">
-        <Brand href="/">
+        <Brand tag={Link} to="/">
           <img src={logo} alt="Logo do site de barbearia"/>
           </Brand>
         <NavbarToggler onClick={toggle} />

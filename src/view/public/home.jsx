@@ -1,17 +1,13 @@
-import { useDispatch } from "react-redux";
-import { getAllServices } from "../../store/servico/action";
+import { Container } from "reactstrap";
+import Banner from "../../components/public/banner";
+
 
 const Home = () => {
 
-    const dispatch = useDispatch();
-
-    const getServices = () => dispatch(getAllServices());
-
     return (
-        <div>
-            <h1>Home do public</h1>
-            <button onClick={getServices}>Serviços</button>
-        </div>
+        <Container>
+            <Banner />
+        </Container>
     );
 };
 
