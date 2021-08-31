@@ -21,7 +21,7 @@ const NavBarComponent = (props) => {
 
   return (
     <div>
-      <Navbar  expand="md">
+      <NavBarBox  expand="md">
         <Brand tag={Link} to="/">
           <img src={logo} alt="Logo do site de barbearia"/>
           </Brand>
@@ -36,7 +36,7 @@ const NavBarComponent = (props) => {
             </Item>
           </Nav>
         </SCollapse>
-      </Navbar>
+      </NavBarBox>
     </div>
   );
 }
@@ -45,12 +45,21 @@ export default NavBarComponent;
 
 
 
+const NavBarBox = styled(Navbar)`
+  background-color: #262626;
+  margin-top: 2rem;
+  padding: 10px 15px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px #000;
+
+`;
+
 const Brand = styled(NavbarBrand)`
 
   flex: 1;
 
   img {
-    max-width: 100px;
+    max-width: 80px;
   }
 
 `;

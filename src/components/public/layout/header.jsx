@@ -17,6 +17,4 @@ export default Header;
 
 
 const HeaderBox = styled.header`
-    background-color: #eee;
-
 `;

@@ -1,15 +1,19 @@
 import Footer from "./footer";
 import Header from "./header";
 import styled from "styled-components";
+import fundo from "../../../assets/images/salao.jpg"
+
 
 const PublicLayout = ({ children }) => {
   return (
     <LayoutContainer>
-      <Header />
-      <Main>
-        {children}
-      </Main>
-      <Footer />
+      <Divbackground>
+        <Header />
+        <Main>
+          {children}
+        </Main>
+        <Footer />
+      </Divbackground>
     </LayoutContainer>
   );
 };
@@ -17,12 +21,25 @@ const PublicLayout = ({ children }) => {
 export default PublicLayout;
 
 const LayoutContainer = styled.div`
-    height: 100vh;
+
+    width: auto;
+    height: auto;
     display: flex;
     flex-direction: column;
+    background-image:  url(${fundo});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
   `;
 
-  const Main = styled.main`
+  const Divbackground = styled.div`
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.63);
+    height: auto;
+  `;
+
+const Main = styled.main`
     flex: 1;
   `;

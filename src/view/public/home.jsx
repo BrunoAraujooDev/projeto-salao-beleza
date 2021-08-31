@@ -1,14 +1,23 @@
 import { Container } from "reactstrap";
 import Banner from "../../components/public/banner";
+import styled from "styled-components";
 
 
 const Home = () => {
 
     return (
-        <Container>
+        <SContainer>
             <Banner />
-        </Container>
+        </SContainer>
     );
 };
 
 export default Home;
+
+
+const SContainer = styled(Container)`
+
+    display: flex;
+    justify-content: center;
+    height: 78vh;
+`;

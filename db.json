@@ -1,11 +1,12 @@
 {
   "servicos": [
-    { "id": 1, "title": "Corte cabelo - Masculino" },
-    { "id": 2, "title": "Barba"  },
-    { "id": 3, "title": "Corte cabelo - Masculino Completo"  },
-    { "id": 4, "title": "Corte cabelo - feminino"  },
-    { "id": 5, "title": "Unha pé + mão"  },
-    { "id": 6, "title": "Pintura no cabelo"  },
-    { "id": 7, "title": "Relaxamento"  }
+    { "id": 1, "title": "Salão A", "tipo":"Unissex", "endereco": "Lorem ipsum dolor sit amet", "telefone": "Lorem ipsum dolor sit amet", "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit" },
+    { "id": 2, "title": "Barbearia A" , "tipo":"Masculino", "endereco": "Lorem ipsum dolor sit amet", "telefone": "Lorem ipsum dolor sit amet", "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit" },
+    { "id": 3, "title": "Barbearia B" , "tipo":"Masculino", "endereco": "Lorem ipsum dolor sit amet", "telefone": "Lorem ipsum dolor sit amet", "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit" },
+    { "id": 4, "title": "Barbearia C" , "tipo":"Masculino", "endereco": "Lorem ipsum dolor sit amet", "telefone": "Lorem ipsum dolor sit amet", "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit" },
+    { "id": 5, "title": "Barbearia D" , "tipo":"Masculino", "endereco": "Lorem ipsum dolor sit amet", "telefone": "Lorem ipsum dolor sit amet", "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit" },
+    { "id": 6, "title": "Salão B" , "tipo":"Feminino", "endereco": "Lorem ipsum dolor sit amet", "telefone": "Lorem ipsum dolor sit amet", "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit" },
+    { "id": 7, "title": "Salão C" , "tipo":"Feminino", "endereco": "Lorem ipsum dolor sit amet", "telefone": "Lorem ipsum dolor sit amet", "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit" },
+    { "id": 8, "title": "Salão D" , "tipo":"Unissex", "endereco": "Lorem ipsum dolor sit amet", "telefone": "Lorem ipsum dolor sit amet", "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit" }
   ]
 }

@@ -1,5 +1,7 @@
 
 
 export const SERVICOS = {
-    getAll: "SERVICOS_GET_ALL"
+    getAll: "SERVICES_GET_ALL",
+    select: "SERVICES_SELECT"
+
 }
