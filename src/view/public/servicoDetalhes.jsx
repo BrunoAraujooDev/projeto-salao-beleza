@@ -28,17 +28,13 @@ const ServicoDetalhes = ( {id} ) => {
       <SJumbotron>
         <SDIVIMG>
           <SIMG src={foto} alt="Imagem do salão"/>
-          <SH1 className="display-3">{servicoSelecionado.title}</SH1>
+          <SH1 className="display-3">{servicoSelecionado.titulo}</SH1>
         </SDIVIMG>
         <SDIV>
           <p><b>Tipo:</b> {servicoSelecionado.tipo}</p>
           <p><b>Endereço:</b> {servicoSelecionado.endereco}</p>
           <p><b>Telefone:</b> {servicoSelecionado.telefone}</p>
-          <p className="lead">{servicoSelecionado.descricao}. 
-          {servicoSelecionado.descricao}. 
-          {servicoSelecionado.descricao}. 
-          {servicoSelecionado.descricao}. 
-          {servicoSelecionado.descricao}.</p>
+          <p className="lead">{servicoSelecionado.descricao}</p>
           <DIVBOTAO className="lead">
             <SButton  onClick={() => contratar(servicoSelecionado) }>Agendar</SButton>
           </DIVBOTAO>

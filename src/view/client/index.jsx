@@ -4,14 +4,18 @@ import PrivateLayout from "../../components/private/layout";
 import ServicoDetalhes from "../public/servicoDetalhes";
 
 
-const Client = () => (
+const Client = () => {
 
-    <Router>
-        <PrivateLayout path="/">
-            <Home path="/" />
-            <ServicoDetalhes path="/servico/:id"/>
-        </PrivateLayout>
-    </Router>
-);
+    document.title = "Cliente"
+
+    return (
+        <Router>
+            <PrivateLayout path="/" tipoAcesso="Cliente">
+                <Home path="/" />
+                <ServicoDetalhes path="/servico/:id" />
+            </PrivateLayout>
+        </Router>
+    );
+};
 
 export default Client;

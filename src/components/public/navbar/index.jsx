@@ -32,7 +32,7 @@ const NavBarComponent = (props) => {
               <NavLink tag={Link} to="/">Home</NavLink>
             </Item>
             <Item>
-              <NavLink tag={Link} to="/servico">Barbearias & Salão</NavLink>
+              <NavLink tag={Link} to="/servico">Barbearias & Salões</NavLink>
             </Item>
           </Nav>
         </SCollapse>

@@ -5,10 +5,12 @@ import PrivateLayout from "../../components/private/layout";
 
 const Admin = () => {
 
+    document.title = "Administrador"
+
    return (
     <Router>
 
-        <PrivateLayout path="/">
+        <PrivateLayout path="/" tipoAcesso="Administrador">
 
             <Home path="/" />
 

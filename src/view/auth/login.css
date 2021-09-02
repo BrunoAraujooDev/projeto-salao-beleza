@@ -1,0 +1,71 @@
+#div-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+#login-form {
+    margin: 8rem 0;
+    padding: 2rem;
+    width: 23rem;
+    height: 25rem;
+    border-radius: 5px;
+    color: white;
+    background: rgba( 0,0,0, .9);
+    box-shadow: 0 15px 10px #000;
+
+}
+
+
+
+.login-botao {
+    color: white;
+    background-color: #0d1217;
+    margin-top: 3rem;
+    width: 5rem;
+}
+
+.login-botao:hover {
+    background-color: #1c2631;
+    border-color: #141c24;
+    color: white;
+    font-weight: bold;
+    
+}
+
+.login-div{
+    position: relative;
+    margin-top: 2rem;
+}
+
+.form-input{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+    color: #fff;
+    border-width: 0;
+    border-style: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.form-label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 1rem;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.login-div input:focus ~ label,
+.login-div input:valid ~ label {
+    top: -20px;
+    left: 0;
+    font-size: .8rem;
+}

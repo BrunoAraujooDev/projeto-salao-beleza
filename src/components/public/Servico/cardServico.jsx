@@ -12,13 +12,9 @@ const CardServico = ({ data, callServices }) => {
       <SCard>
         <SCardImg width="50%" src={foto} alt="Card image cap" />
         <SCardBody>
-          <CardTitle tag="h5">{data.title}</CardTitle>
+          <CardTitle tag="h5">{data.titulo}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 ">Rua {data.endereco}</CardSubtitle>
           <CardText>
-            {data.descricao}
-            {data.descricao}
-            {data.descricao}
-            {data.descricao}
             {data.descricao}
           </CardText>
           <SButton botao onClick={() => callServices(data)}>Agendar</SButton>
