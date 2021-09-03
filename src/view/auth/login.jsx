@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { authLogin } from "../../store/auth/action";
 import "./login.css";
 
 const Login = () => {
 
+    const dispatch = useDispatch();
     const [form, setForm] = useState({});
 
 
@@ -12,6 +15,8 @@ const Login = () => {
                 [event.target.name]: event.target.value
             })
     }
+
+    const handleSubmit = () => dispatch(authLogin(form));
 
     const estaValido = () => Object.keys(form).length === 0 || form.identifier?.length === 0 || form.password?.length === 0;
 
@@ -32,6 +37,7 @@ const Login = () => {
                     <label htmlFor="password" className="form-label">Senha</label>
                 </div>
                 <button type="submit" className="btn login-botao" disabled={estaValido()}
+                onClick={handleSubmit}
                 >Entrar</button>
             </form>
         </div>

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
-const NavBar = ({ tipoAcesso }) => {
-//   const auth = useSelector((state) => state.auth.auth);
+const NavBar = () => {
+  const auth = useSelector((state) => state.auth.auth);
   return (
     <nav className="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div className="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
@@ -12,9 +12,7 @@ const NavBar = ({ tipoAcesso }) => {
       <div className="navbar-menu-wrapper d-flex align-items-center">
         <ul className="navbar-nav">
           <li className="nav-item font-weight-semibold d-none d-lg-block">
-            {/* { tipoAcesso || "Painel de dashbord"} */}
-            {/* vou remover depois */}
-            {/* {auth.user.username} */}
+            {auth.user.username || "Painel de dashbord"}
           </li>
         </ul>
       </div>

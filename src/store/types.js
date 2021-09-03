@@ -5,3 +5,8 @@ export const SERVICOS = {
     select: "SERVICES_SELECT"
 
 }
+
+export const AUTH = {
+    login: "AUTH_LOGIN"
+
+}

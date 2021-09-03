@@ -1,14 +1,20 @@
-import { Router } from "@reach/router";
+import { Redirect, Router } from "@reach/router";
 
 import Public from "./view/public"
 import Admin from "./view/admin"
 import Client from "./view/client"
 import Login from "./view/auth/login";
+import { isAuthenticated } from "./config/storage";
 
 
-const PrivateRoute = ({component : Component}) => {
 
-    return <Component/>;
+const PrivateRoute = ({component : Component, ...rest}) => {
+
+    if(!isAuthenticated()){
+        <Redirect to="Login" noThrow/>
+    }
+
+    return <Component {...rest} />;
 }
 
 
