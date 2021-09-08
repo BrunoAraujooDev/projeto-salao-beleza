@@ -36,14 +36,20 @@ const Login = () => {
                         value={form.password || ""}/>
                     <label htmlFor="password" className="form-label">Senha</label>
                 </div>
-                <button type="submit" className="btn login-botao" disabled={estaValido()}
-                onClick={handleSubmit}
-                >Entrar</button>
+                    <button type="submit" className="btn login-botao" disabled={estaValido()}
+                    onClick={handleSubmit}
+                    >Entrar
+                    </button>
+                    <p id="registrar">Registre-se</p>
             </form>
         </div>
     );
 }
 
 export default Login;
+
+
+
+
 
 

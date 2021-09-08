@@ -6,7 +6,7 @@ const NavBar = () => {
     <nav className="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div className="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a className="navbar-brand brand-logo" href="index.html">
-          Gestão de barbearia e salão de beleza
+          Gestão 
         </a>
       </div>
       <div className="navbar-menu-wrapper d-flex align-items-center">

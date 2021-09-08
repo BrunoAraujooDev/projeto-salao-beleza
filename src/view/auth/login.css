@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #ddbea9;
 }
 
 
@@ -13,8 +14,8 @@
     height: 25rem;
     border-radius: 5px;
     color: white;
-    background: rgba( 0,0,0, .9);
-    box-shadow: 0 15px 10px #000;
+    background: #262626;
+    box-shadow: 0 10px 10px #000;
 
 }
 
@@ -22,14 +23,16 @@
 
 .login-botao {
     color: white;
-    background-color: #0d1217;
+    background-color: #944E32;
+    border-radius: 0px;
+    border-color: #000;
     margin-top: 3rem;
-    width: 5rem;
+    width: 6rem;
 }
 
 .login-botao:hover {
-    background-color: #1c2631;
-    border-color: #141c24;
+    background-color: #7d3011;
+    border-color: #000;
     color: white;
     font-weight: bold;
     
@@ -69,3 +72,11 @@
     left: 0;
     font-size: .8rem;
 }
+
+
+#registrar{
+    margin-top: 3rem;
+    text-align: end;
+    text-decoration: underline;
+}
+

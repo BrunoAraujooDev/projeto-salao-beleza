@@ -34,6 +34,9 @@ const NavBarComponent = (props) => {
             <Item>
               <NavLink tag={Link} to="/servico">Barbearias & Salões</NavLink>
             </Item>
+            <Item>
+              <NavLink tag={Link} to="/login">Login</NavLink>
+            </Item>
           </Nav>
         </SCollapse>
       </NavBarBox>

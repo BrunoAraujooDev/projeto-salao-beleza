@@ -6,11 +6,17 @@ import {
 import styled from 'styled-components';
 import foto from "../../../assets/images/foto.jpg"
 
+const urlApi = process.env.REACT_APP_API
+
 const CardServico = ({ data, callServices }) => {
+
+
+
   return (
     <CardServicoSection>
       <SCard>
-        <SCardImg width="50%" src={foto} alt="Card image cap" />
+        {console.log(data.imagem)}
+        <SCardImg width="50%" src={ data.imagem ? urlApi+data.imagem.url : foto } alt={data.titulo} />
         <SCardBody>
           <CardTitle tag="h5">{data.titulo}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 ">Rua {data.endereco}</CardSubtitle>

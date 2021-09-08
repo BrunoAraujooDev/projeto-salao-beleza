@@ -9,6 +9,9 @@ import styled from 'styled-components';
 import foto from "../../assets/images/barberutils.jpg"
 
 
+const urlAPI = process.env.REACT_APP_API
+
+
 const ServicoDetalhes = ( {id} ) => {
 
     const servicoSelecionado = useSelector( state => state.servico.selected)
@@ -27,7 +30,7 @@ const ServicoDetalhes = ( {id} ) => {
     <SContainer>
       <SJumbotron>
         <SDIVIMG>
-          <SIMG src={foto} alt="Imagem do salão"/>
+          <SIMG src={servicoSelecionado.imagem ?  urlAPI+servicoSelecionado.imagem.url  : foto} alt="Imagem do salão"/>
           <SH1 className="display-3">{servicoSelecionado.titulo}</SH1>
         </SDIVIMG>
         <SDIV>
