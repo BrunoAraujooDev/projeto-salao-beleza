@@ -15,3 +15,7 @@ export const hasToken = () => {
 export const isAuthenticated = () => hasToken() !== false;
 
 
+// export const clearStorage = localStorage.clear();
+export const clearStorage = () => localStorage.removeItem(tk);
+
+

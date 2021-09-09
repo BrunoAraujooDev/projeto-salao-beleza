@@ -1,4 +1,4 @@
-const Main = ({ children }) => {
+const Main = ({ children, title }) => {
     return (
       <div className="main-panel">
         <div className="content-wrapper">
@@ -6,7 +6,7 @@ const Main = ({ children }) => {
           <div className="row page-title-header">
             <div className="col-12">
               <div className="page-header">
-                <h4 className="page-title">Dashboard</h4>
+                <h4 className="page-title">{title}</h4>
               </div>
             </div>
           </div>

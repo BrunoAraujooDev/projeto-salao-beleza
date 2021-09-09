@@ -4,6 +4,7 @@ import PrivateLayout from "../../components/private/layout";
 import { useSelector } from "react-redux";
 import { enumRole } from "../../util/roles";
 import Error404 from "../error/error404";
+import ServicoDetalhes from "../public/servicoDetalhes";
 
 
 const Menu = [
@@ -16,7 +17,7 @@ const Menu = [
 ]
 
 
-const Admin = () => {
+const Private = ({ location, uri, profile }) => {
 
     document.title = "Administrador";
 
@@ -25,12 +26,20 @@ const Admin = () => {
 
     const routerAuthorized = Menu.filter((route) => route.authorization.includes(roleId));
 
+    const currentRoute = Menu.find(item => item.path === `/${location.pathname.split("/")[2]}`|| "");
+
    return (
     <Router>
-        <PrivateLayout path="/" tipoAcesso="Administrador">
+        <PrivateLayout path="/" 
+        tipoAcesso={profile || ""}
+        current={currentRoute} 
+        menu={routerAuthorized} 
+        uri={uri}
+        >
             {routerAuthorized.map( ({component: Component, ...route},i) => (
                 <Component {...route} key={i}/>
             ))}
+            <ServicoDetalhes path="/servico/:id" /> 
             <Error404 default/>
         </PrivateLayout >
 
@@ -38,4 +47,4 @@ const Admin = () => {
     );
 }
 
-export default Admin;
+export default Private;
