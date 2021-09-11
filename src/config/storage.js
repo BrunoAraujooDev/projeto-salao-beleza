@@ -1,7 +1,10 @@
 const { REACT_APP_TOKEN_KEY : tk} = process.env;
 
 
-export const saveUser = ( data ) => localStorage.setItem(tk, JSON.stringify( data));
+export const saveUser = ( data ) => new Promise((resolve) => { 
+    localStorage.setItem(tk, JSON.stringify( data))
+    resolve();
+});
 
 
 export const getToken = () => JSON.parse(localStorage.getItem(tk));

@@ -7,6 +7,7 @@ export const SERVICOS = {
 }
 
 export const AUTH = {
-    login: "AUTH_LOGIN"
+    login: "AUTH_LOGIN",
+    loading: "AUTH_LOADING"
 
 }

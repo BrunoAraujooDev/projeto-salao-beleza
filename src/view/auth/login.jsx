@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { authLogin } from "../../store/auth/action";
 import "./login.css";
@@ -7,6 +8,9 @@ const Login = () => {
 
     const dispatch = useDispatch();
     const [form, setForm] = useState({});
+
+
+    const authLoading = useSelector( state => state.auth.loading);
 
 
     const handleForm = (event) => {
@@ -38,7 +42,7 @@ const Login = () => {
                 </div>
                     <button type="submit" className="btn login-botao" disabled={estaValido()}
                     onClick={handleSubmit}
-                    >Entrar
+                    >{authLoading ? "Carregando" :"Enviar"}
                     </button>
                     <p id="registrar">Registre-se</p>
             </form>

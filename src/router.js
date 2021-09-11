@@ -11,7 +11,7 @@ import Error404 from "./view/error/error404";
 
 const Routers = () => {
 
-    const userRole = useSelector(state => state.auth.auth.user.role.type);
+    const userRole = useSelector(state => state.auth.auth?.user?.role?.type);
     const roleId = enumRole(userRole);
 
 const PrivateRoute = ({component : Component, ...rest}) => {
