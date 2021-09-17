@@ -15,11 +15,11 @@ const NavBar = () => {
 
   return (
     <nav className="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div className="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+      <SDIV className="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a className="navbar-brand brand-logo" href="index.html">
           Gestão 
         </a>
-      </div>
+      </SDIV>
       <div className="navbar-menu-wrapper d-flex align-items-center">
         <UserMenu >
           <li className="nav-item font-weight-semibold d-none d-lg-block">
@@ -47,7 +47,13 @@ const UserMenu = styled.ul.attrs({
 
 const ActionMenu = styled.ul.attrs({
   className: "navbar-nav"
+  
 })`
+`;
+
+const SDIV = styled.div`
+  background: #262626 !important;
+  
 `;
 
 

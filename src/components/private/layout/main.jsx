@@ -1,3 +1,5 @@
+
+
 const Main = ({ children, title }) => {
     return (
       <div className="main-panel">
@@ -20,4 +22,6 @@ const Main = ({ children, title }) => {
   };
   
   export default Main;
+
+
   

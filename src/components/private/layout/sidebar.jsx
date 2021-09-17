@@ -1,5 +1,6 @@
 import { Link } from "@reach/router";
 import { useSelector } from "react-redux";
+import styled from "styled-components";
 
 
 const Sidebar = ({menu, uri}) => {
@@ -7,7 +8,7 @@ const Sidebar = ({menu, uri}) => {
   const roleName = useSelector(state => state.auth.auth.user.role.name)
 
     return (
-        <nav className="sidebar sidebar-offcanvas" id="sidebar">
+        <NavMenu className="sidebar sidebar-offcanvas" id="sidebar">
             <ul className="nav">
               <li className="nav-item nav-category">Tipo: {roleName}</li>
               {menu?.map( (item, i) => (
@@ -20,8 +21,16 @@ const Sidebar = ({menu, uri}) => {
               </li>
               ))}
             </ul>
-          </nav>
+          </NavMenu>
     );
 }
 
 export default Sidebar;
+
+
+const NavMenu = styled.nav`
+  background: #262626;
+  &:hover{
+    background: #262626;
+  }
+`

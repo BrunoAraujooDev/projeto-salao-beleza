@@ -9,7 +9,7 @@ export const authLogin = (form) => {
 
     const routeOutside = {
         authenticated: "/admin",
-        aluno: "/aluno"
+        Empreendedor: "/client"
     };
 
     return async (dispatch) => {
@@ -18,9 +18,11 @@ export const authLogin = (form) => {
             const result = await authServiceLogin(form);
             if(result.data){
                 await saveUser(result.data)
+                console.log('result.data', result.data)
                 http.defaults.headers["Authorization"] = `bearer ${result.data.jwt}`
                 dispatch({type: AUTH.login, result: result.data});
                 const role = result.data.user.role.type;
+                console.log('role', role)
                 navigate(routeOutside[role]);
             }
 

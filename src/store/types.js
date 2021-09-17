@@ -11,3 +11,10 @@ export const AUTH = {
     loading: "AUTH_LOADING"
 
 }
+
+export const CLIENT = {
+    getAll: "CLIENT_GET_ALL",
+    select: "CLIENT_SELECT",
+    create: "CLIENT_CREATE"
+
+}

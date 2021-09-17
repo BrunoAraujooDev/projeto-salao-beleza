@@ -1,8 +1,12 @@
 import { Router } from "@reach/router";
+
 import Home from "./home";
+import Clients from "./clients";
+
 import PrivateLayout from "../../components/private/layout";
 import { useSelector } from "react-redux";
 import { enumRole } from "../../util/roles";
+
 import Error404 from "../error/error404";
 import ServicoDetalhes from "../public/servicoDetalhes";
 
@@ -13,6 +17,12 @@ const Menu = [
         path: "/",
         component: Home,
         authorization: [1,2]
+    },
+    {
+        title: "Clientes",
+        path: "/clientes",
+        component: Clients,
+        authorization: [1]
     }
 ]
 
