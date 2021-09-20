@@ -1,3 +1,4 @@
+import { Link } from "@reach/router";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -44,7 +45,7 @@ const Login = () => {
                     onClick={handleSubmit}
                     >{authLoading ? "Carregando" :"Enviar"}
                     </button>
-                    <p id="registrar">Registre-se</p>
+                    <Link to="/signup" id="registrar">Registre-se</Link>
             </form>
         </div>
     );

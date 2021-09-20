@@ -7,6 +7,8 @@ import { isAuthenticated } from "./config/storage";
 import { useSelector } from "react-redux";
 import { enumRole } from "./util/roles";
 import Error404 from "./view/error/error404";
+import { routeOutside } from "./config/auth";
+import Register from "./view/auth/register";
 
 
 const Routers = () => {
@@ -16,10 +18,15 @@ const Routers = () => {
 
 const PrivateRoute = ({component : Component, ...rest}) => {
 
-    if(!isAuthenticated()  ){
-        <Redirect to="Login" noThrow/>
+    const estaLogado = rest.path === "/login";
+
+    if(!isAuthenticated() && !estaLogado ){
+       return <Redirect to="Login" noThrow/>
     }
-    if(rest.type !== roleId){
+    if(isAuthenticated() && estaLogado ){
+       return <Redirect to={routeOutside[userRole]} noThrow/>
+    }
+    if(userRole && rest.type !== roleId){
         return <Error404/>
     }
 
@@ -30,7 +37,9 @@ const PrivateRoute = ({component : Component, ...rest}) => {
 
     return (
         <Router>
+            <PrivateRoute component={Login} path="/login" />
             <Public path="/*" />
+            <Register path="/signup" />
             <PrivateRoute component={Private} path="/admin/*" profile="admin" type={1}/>
             <PrivateRoute component={Private} path="/client/*" profile="client" type={2}/>
             <Login path="/login" />

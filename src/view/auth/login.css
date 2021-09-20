@@ -75,8 +75,12 @@
 
 
 #registrar{
-    margin-top: 3rem;
-    text-align: end;
-    text-decoration: underline;
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    height: 100px;
+    align-items: flex-end;
+    width: 280px;
+    margin: 0px;
 }
 
