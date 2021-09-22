@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Button, FormGroup, Input, Label } from "reactstrap";
 import styled from "styled-components";
 
-const Form = ({ action }) => {
-
-    const [form, setForm] = useState({});
+const Form = ({ action, edit }) => {
+  console.log('edit', edit)
+    const [form, setForm] = useState({
+      ...edit.data,
+    });
 
     const handlechange = (event) => {
       setForm({
@@ -49,7 +51,7 @@ const Form = ({ action }) => {
         />
       </FormGroup>
       <Button size="m" onClick={() => action(form)}>
-        Enviar
+        {edit.status ? "Editar" : "Enviar"}
       </Button>
     </FormContainer>
     );

@@ -1,11 +1,13 @@
-import { createNewClient, getClientService, getClientServiceById } from "../../services/client.service";
+import { createNewClient, getClientService, getClientServiceById, getCountClients } from "../../services/client.service";
 import { CLIENT } from "../types";
 
 
-export const getClients = () => {
+export const getClients = (offset=1, limit=10) => {
     return async(dispatch) => {
-        const result = await getClientService();
-        dispatch({type: CLIENT.getAll, client: result.data})
+        const count = await getCountClients();
+        const result = await getClientService(offset, limit);
+        dispatch({type: CLIENT.getAll, client: result.data});
+        dispatch({type: CLIENT.count, count: count.data});
 
     }
 }
@@ -23,7 +25,7 @@ export const createClient = (data) => {
     return async(dispatch) => {
 
         const result = await createNewClient(data);
-        dispatch({type: CLIENT.create, client: result.data})
+        // dispatch({type: CLIENT.create, client: result.data})
         return result.data;
     }
 }

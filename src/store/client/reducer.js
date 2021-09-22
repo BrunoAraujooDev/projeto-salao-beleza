@@ -2,7 +2,8 @@ import { CLIENT } from "../types";
 
 const INITIAL_STATE = {
     all: [],
-    selected: {}
+    selected: {},
+    count: 0
 };
 
 
@@ -15,8 +16,8 @@ const reducer = (state = INITIAL_STATE, action) => {
         case CLIENT.select:
             state.selected = action.client;
             return state;
-        case CLIENT.create:
-            state.all = [...state.all, action.data]
+        case CLIENT.count:
+            state.count = action.count;
             return state;
         default:
             return state;
