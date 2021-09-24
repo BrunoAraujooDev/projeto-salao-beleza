@@ -50,6 +50,7 @@ export default NavBarComponent;
 
 const NavBarBox = styled(Navbar)`
   background-color: #262626;
+  font-size: 1.1rem;
   margin-top: 2rem;
   padding: 10px 15px;
   font-weight: bold;

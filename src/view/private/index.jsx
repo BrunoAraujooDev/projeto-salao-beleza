@@ -3,6 +3,7 @@ import { Router } from "@reach/router";
 import Home from "./home";
 import Clients from "./clients";
 import User from "./user";
+import Salao from "./salao";
 
 import PrivateLayout from "../../components/private/layout";
 import { useSelector } from "react-redux";
@@ -30,6 +31,12 @@ const Menu = [
         path: "/users",
         component: User,
         authorization: [1]
+    },
+    {
+        title: "Estabelecimento",
+        path: "/estabelecimento",
+        component: Salao,
+        authorization: [2]
     }
 ]
 

@@ -15,7 +15,6 @@ const CardServico = ({ data, callServices }) => {
   return (
     <CardServicoSection>
       <SCard>
-        {console.log(data.imagem)}
         <SCardImg width="50%" src={ data.imagem ? urlApi+data.imagem.url : foto } alt={data.titulo} />
         <SCardBody>
           <CardTitle tag="h5">{data.titulo}</CardTitle>

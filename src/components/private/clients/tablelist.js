@@ -5,7 +5,7 @@ import { range } from "ramda";
 
 
 
-const TableList = ({ data, paginate, current, total, edit }) => {
+const TableList = ({ data, paginate, current, total, edit, askDelete}) => {
 
     return (
         <>
@@ -29,7 +29,7 @@ const TableList = ({ data, paginate, current, total, edit }) => {
                             <td>
                                 <Actions>
                                     <FaEdit title="editar" onClick={() => edit(item)}/>
-                                    <FaTrash title="excluir" />
+                                    <FaTrash title="excluir" className="text-danger" onClick={() => askDelete(item)}/>
                                 </Actions>
                             </td>
                         </tr>

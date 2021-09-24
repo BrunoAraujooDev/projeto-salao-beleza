@@ -1,4 +1,4 @@
-import { callServices, getServiceById } from "../../services/servico.service"
+import { callServices, createNewService, getServiceById } from "../../services/servico.service"
 import { SERVICOS } from "../types";
 
 
@@ -23,6 +23,14 @@ export const selectServiceByID = (id) => {
         const result = await getServiceById(id);
         
         dispatch({type: SERVICOS.select, servico: result.data})
+    }
+}
+
+export const createService = (servico) => {
+    return async(dispatch) => {
+        const result = await createNewService(servico);
+
+        return result.data;
     }
 }
 

@@ -25,6 +25,7 @@ const Servico = () => {
 
     return (
         <Container>
+            <Busca placeholder="Digite seu bairro aqui"/>
             <ServicosContainer>
                {servicos.map( servico => 
                     <CardServico key={servico.id} data={servico} callServices={callServices}/>)}
@@ -46,4 +47,18 @@ const ServicosContainer = styled.div`
     padding: 1rem;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 32px;
+`;
+
+
+const Busca = styled.input`
+    margin-top: 200px;
+    margin-bottom: 72px;
+    position: relative;
+    right: -250px;
+    width: 60%;
+    height: 50px;
+    padding: 10px 15px;
+    border: 2px solid #000;
+    box-shadow: 0 1px 4px #000;
+
 `;

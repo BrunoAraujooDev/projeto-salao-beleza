@@ -1,5 +1,10 @@
 import http from "../config/http";
 
-export const callServices = () => http.get("/servicos");
+const path = "/servicos"
 
-export const getServiceById = (id) => http.get(`servicos/${id}`);
+export const callServices = () => http.get(path);
+
+export const getServiceById = (id) => http.get(`${path}/${id}`);
+
+export const createNewService = (data) => http.post(path, data);
+

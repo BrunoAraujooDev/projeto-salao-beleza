@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Form from "../../components/private/clients/form";
 import styled from "styled-components";
 import TableList from "../../components/private/clients/tablelist";
-import { createClient, getClients } from "../../store/client/action";
+import { createClient, deleteClient, editClient, getClients } from "../../store/client/action";
 import { toast } from "react-toastify";
-import { FormGroup, Input } from "reactstrap";
+import { Button, FormGroup, Input, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 
 const Clients = () => {
 
@@ -13,15 +13,27 @@ const Clients = () => {
   const clients = useSelector(state => state.client.all);
   const count = useSelector(state => state.client.count);
   const [hasForm, setHasForm] = useState(false);
-  const [paginator, setPaginator] = useState({
-    offset: 1,
-    limit: 10
-  })
-  const [edit, setEdit] = useState({
+
+  const [modal, setModal] = useState({
     status: false,
-    data: {},
   });
 
+  const toggleModal = () =>
+    setModal({
+      ...modal,
+      status: !modal.status,
+    });
+
+    const [edit, setEdit] = useState({
+      status: false,
+      data: {},
+    });
+
+    const [paginator, setPaginator] = useState({
+      offset: 1,
+      limit: 10
+    })
+    
   const totalPage = () => Math.ceil(count / paginator.limit);
 
   const toggleForm = () => setHasForm(!hasForm);
@@ -29,12 +41,13 @@ const Clients = () => {
   const paginate = (page) => setPaginator({ ...paginator, offset: page });
 
   const submitClient = data => {
-    dispatch(createClient(data))
+    const handleSwitch = edit.status ? editClient : createClient;
+    dispatch(handleSwitch(data))
       .then(data => {
         setHasForm(false);
-        toast.success(`Cliente ${data.Nome} cadastrado com sucesso`);
+        toast.success(`Cliente ${data.Nome} ${edit.status ? "editado" : "cadastrado"} com sucesso`);
         toggleForm();
-        dispatch(getClients);
+        dispatch(getClients(paginator.offset, paginator.limit));
       })
       .catch(erro => console.log("erro", erro))
   }
@@ -50,6 +63,23 @@ const Clients = () => {
       data: item,
     });
   };
+
+  const handleDelete = () => {
+    dispatch(deleteClient(modal.cliente.id))
+    .then( () => {
+      toast.success(`Cliente ${modal.cliente.Nome} excluido com sucesso`);
+        dispatch(getClients(paginator.offset, paginator.limit));
+        toggleModal();
+      })
+      .catch((err) => console.log("##", err));
+  }
+
+  const askDelete = cliente => {
+    setModal({
+      status: true,
+      cliente,
+    })
+  }
 
   useEffect(() => {
     if (hasForm === false){
@@ -104,7 +134,25 @@ const Clients = () => {
         total={totalPage}
         current={paginator.offset}
         edit={handleEdit}
+        askDelete={askDelete}
       />
+      <Modal isOpen={modal.status} toggle={toggleModal}>
+        <ModalHeader className="text-danger" toggle={toggleModal}>
+          ATENÇÃO
+        </ModalHeader>
+        <ModalBody>
+          Deseja excluir o cliente {modal.cliente?.Nome || null} ?
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={handleDelete}>
+            Sim
+          </Button>{" "}
+          <Button color="secondary" onClick={toggleModal}>
+            Não
+          </Button>
+        </ModalFooter>
+      </Modal>
+
     </>
   )
 

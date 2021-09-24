@@ -7,9 +7,9 @@ const Banner = () => {
   return (
     <div>
       <SJumbotron>
-        <h1 className="display-3">Barber saloon</h1>
-        <p className="lead">Bem-vindo ao maior site de barbearias e salão de beleza do Rio de Janeiro.</p>
-        <p>Aqui você encontra os melhores cabelereiros/barbeiros pertinho de você.</p>
+        <h1 className="display-1 text-center">Barber saloon</h1>
+        <SP className="lead">Bem-vindo ao maior site de barbearias e salão de beleza do Rio de Janeiro.</SP>
+        <SP className="lead">Aqui você encontra os melhores cabelereiros/barbeiros pertinho de você.</SP>
         <SParagrafo className="lead">
           <SButton  onClick={ () => navigate("/servico")}>CONFIRA AQUI</SButton>
         </SParagrafo>
@@ -36,6 +36,7 @@ const SParagrafo = styled.p`
 const SButton = styled(Button)`
 
   background-color: #944E32;
+  width: 20rem;
   color: #fff;
   border-radius: 0px;
   border: 1px solid #000;
@@ -44,4 +45,9 @@ const SButton = styled(Button)`
     background-color: #7d3011;
     border-color: #000;
   }
+`;
+
+const SP = styled.p`
+  font-size: 2rem;
+  text-align: center;
 `;

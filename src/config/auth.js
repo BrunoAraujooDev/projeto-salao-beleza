@@ -1,4 +1,4 @@
 export  const routeOutside = {
     authenticated: "/admin",
-    Empreendedor: "/client"
+    empreendedor: "/client"
 };
