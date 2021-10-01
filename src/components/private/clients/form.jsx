@@ -3,7 +3,7 @@ import { Button, FormGroup, Input, Label } from "reactstrap";
 import styled from "styled-components";
 
 const Form = ({ action, edit }) => {
-  console.log('edit', edit)
+  
     const [form, setForm] = useState({
       ...edit.data,
     });
@@ -24,7 +24,7 @@ const Form = ({ action, edit }) => {
           name="Nome"
           id="Nome"
           placeholder="Informe o nome do proprietário"
-          value={form.Nome || ""}
+          value={form.Nome|| ""}
           onChange={handlechange}
         />
       </FormGroup>

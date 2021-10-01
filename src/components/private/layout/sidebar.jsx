@@ -13,12 +13,11 @@ const Sidebar = ({menu, uri}) => {
               <li className="nav-item nav-category">Tipo: {roleName}</li>
               {menu?.map( (item, i) => (
 
-              <li className="nav-item" key={i}>
-                <Link className="nav-link" to={uri+item.path}>
-                  <i className="menu-icon typcn typcn-document-text" />
+              <SLI className="nav-item" key={i}>
+                <SLINK to={uri+item.path}>
                   <span className="menu-title">{item.title}</span>
-                </Link>
-              </li>
+                </SLINK>
+              </SLI>
               ))}
             </ul>
           </NavMenu>
@@ -34,3 +33,28 @@ const NavMenu = styled.nav`
     background: #262626;
   }
 `
+
+const SLI = styled.li`
+    position: relative;
+    transition-duration: 0.3s;
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    white-space: nowrap;
+      &:hover {
+        background-color: #F3F3F3;
+      }
+
+    `;
+    
+    const SLINK = styled(Link)`
+      text-decoration: none;
+      padding: 15px 30px 15px 55px;
+      height: 52px;
+      width: 100%;
+      color: #fff;
+      &:hover{
+        color: #212529;
+      }
+    `;
+    

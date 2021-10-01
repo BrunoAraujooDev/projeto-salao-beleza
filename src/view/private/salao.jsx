@@ -1,24 +1,29 @@
 import { useState } from "react";
+import { FaEdit, FaTrash } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { Button, FormGroup, Input, Label } from "reactstrap";
+import { Button, FormGroup, Input, Label, Table } from "reactstrap";
 import styled from "styled-components";
-// import http from "../../config/http";
-import { createService } from "../../store/servico/action";
+import { createService, editService } from "../../store/servico/action";
 
 const Salao = () => {
 
     const dispatch = useDispatch();
-    const [form, setForm] = useState({});
-    // const [prog, setProg] = useState(0);
+    
+    const usuario = useSelector(state => state.auth.auth.user);
+    const [estado, setEstado] = useState(true);
+    const [servicos, setServicos] = useState({...usuario.servico});
 
     const handleChange = (event) => {
         const { files, value, name } = event.target;
-        setForm({
-            ...form,
+        setServicos({
+            ...servicos,
             [name]: files?.length > 0 ? files[0] : value,
         });
+        
     };
+
 
     const submit = () => {
         // const formData = new FormData();
@@ -28,16 +33,63 @@ const Salao = () => {
         //         let progress = Math.round(event.loaded * 100 / event.total);
         //         setProg(progress);
         //     }
-        dispatch(createService(form))
-        .then(() => toast.success(`Estabelecimento ${form?.titulo} feito com sucesso!`));
-        setForm({})
+        if (usuario.servico) {
+            dispatch(editService({ ...servicos, id: usuario.servico.id }))
+                .then(() => toast.success("Dados atualizados com sucesso!"))
+                setServicos({})
+            setEstado(!estado);
+        } else {
+
+            dispatch(createService({ ...servicos, user_id: usuario.id }))
+                .then(() => toast.success(`Estabelecimento ${servicos?.titulo} feito com sucesso!`));
+                setServicos({})
+            setEstado(!estado);
+        }
     }
 
+    
+    if (usuario.servico && estado) {
+        return <>
+            <Table dark>
+                <thead>
+                    <tr>
+                        <th>Nome do estabelecimento</th>
+                        <th>Endereço</th>
+                        <th>Telefone</th>
+                        <th>Descrição</th>
+                        <th>Tipo</th>
+                        <th>Bairro</th>
+                        <th>Visualizações</th>
+                        <th>Avaliações</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{usuario.servico.titulo}</td>
+                        <td>{usuario.servico.endereco}</td>
+                        <td>{usuario.servico.telefone}</td>
+                        <td>{usuario.servico.descricao}</td>
+                        <td>{usuario.servico.tipo}</td>
+                        <td>{usuario.servico.bairro}</td>
+                        <td>{usuario.servico.contador}</td>
+                        <td>{usuario.servico.mensagem}</td>
+                        <td>
+                            <Actions>
+                                <FaEdit title="editar" onClick={() => setEstado(!estado)} />
+                                <FaTrash title="excluir" className="text-danger" />
+                            </Actions>
+                        </td>
+                    </tr>
+                </tbody>
+            </Table>
+        </>
+    }
 
     return (
         <>
-            <SBUTTON>
-                Editar
+            <SBUTTON onClick={() => setEstado(!estado)}>
+                Listar estabelecimentos
             </SBUTTON>
             <Container>
                 {/* <Progress className="prg" bar color="success" value={prog} /> */}
@@ -48,29 +100,40 @@ const Salao = () => {
                         name="titulo"
                         id="titulo"
                         placeholder="Informe o nome do estabelecimento"
-                        value={form.titulo || ""}
+                        value={servicos.titulo || ""}
                         onChange={handleChange}
                     />
                 </FormGroup>
                 <FormGroup className="my-3">
-                <Label for="telefone">Telefone:</Label>
+                    <Label for="telefone">Telefone:</Label>
                     <Input
                         type="tel"
                         name="telefone"
                         id="telefone"
                         placeholder="Informe o Telefone"
-                        value={form.telefone || ""}
+                        value={servicos.telefone || ""}
                         onChange={handleChange}
                     />
                 </FormGroup>
                 <FormGroup className="my-3">
-                <Label for="endereco">Endereço:</Label>
+                    <Label for="endereco">Endereço:</Label>
                     <Input
                         type="text"
                         name="endereco"
                         id="endereco"
                         placeholder="Informe o Endereço"
-                        value={form.endereco || ""}
+                        value={servicos.endereco || ""}
+                        onChange={handleChange}
+                    />
+                </FormGroup>
+                <FormGroup className="my-3">
+                    <Label for="bairro">Bairro:</Label>
+                    <Input
+                        type="text"
+                        name="bairro"
+                        id="bairro"
+                        placeholder="Informe o Endereço"
+                        value={servicos.bairro || ""}
                         onChange={handleChange}
                     />
                 </FormGroup>
@@ -81,22 +144,23 @@ const Salao = () => {
                         name="tipo"
                         id="tipo"
                         placeholder="Informe o Tipo do salão"
-                        value={form.tipo || ""}
+                        value={servicos.tipo || ""}
                         onChange={handleChange}
                     >
+                        <option value="" disabled>Selecione um tipo</option>
                         <option value="Feminino">Feminino</option>
                         <option value="Masculino">Masculino</option>
                         <option value="Unissex">Unissex</option>
                     </Input>
                 </FormGroup>
                 <FormGroup className="my-3">
-                <Label for="descricao">Descrição:</Label>
+                    <Label for="descricao">Descrição:</Label>
                     <Input
                         type="textarea"
                         name="descricao"
                         id="descricao"
                         placeholder="Informe uma descrição"
-                        value={form.descricao || ""}
+                        value={servicos.descricao || ""}
                         onChange={handleChange}
                     />
                 </FormGroup>
@@ -140,4 +204,15 @@ const Container = styled.div`
     width: 200px;
     height: 20px;
   }
+`;
+
+const Actions = styled.div`
+    display: flex;
+    justify-content: space-around;
+    max-width: 100px;
+    cursor: pointer;
+
+    svg:hover{
+        color: grey;
+    }
 `;

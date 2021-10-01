@@ -8,7 +8,8 @@ export const SERVICOS = {
 
 export const AUTH = {
     login: "AUTH_LOGIN",
-    loading: "AUTH_LOADING"
+    loading: "AUTH_LOADING",
+    setNewAuth: "AUTH_NEW"
 
 }
 

@@ -22,7 +22,7 @@ const CardServico = ({ data, callServices }) => {
           <CardText>
             {data.descricao}
           </CardText>
-          <SButton botao onClick={() => callServices(data)}>Agendar</SButton>
+          <SButton botao onClick={(e) => callServices(e, data)}>Visualizar</SButton>
         </SCardBody>
       </SCard>
     </CardServicoSection>

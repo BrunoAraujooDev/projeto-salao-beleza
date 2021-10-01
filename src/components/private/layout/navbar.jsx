@@ -1,13 +1,17 @@
 import { navigate } from "@reach/router";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { clearStorage } from "../../../config/storage";
+import { setNewAuth } from "../../../store/auth/action";
 
 const NavBar = () => {
   const auth = useSelector((state) => state.auth.auth);
+  const dispatch = useDispatch();
 
   const logout = () => {
     clearStorage();
+    dispatch(setNewAuth({}))
     navigate("/");
 
   }
@@ -23,7 +27,7 @@ const NavBar = () => {
       <div className="navbar-menu-wrapper d-flex align-items-center">
         <UserMenu >
           <li className="nav-item font-weight-semibold d-none d-lg-block">
-            {auth.user.username || "Painel de dashbord"}
+            Olá, {auth.user.username || "Painel de dashbord"}
           </li>
         </UserMenu>
         <ActionMenu>

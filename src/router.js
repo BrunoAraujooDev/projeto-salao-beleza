@@ -21,7 +21,7 @@ const PrivateRoute = ({component : Component, ...rest}) => {
     const estaLogado = rest.path === "/login";
 
     if(!isAuthenticated() && !estaLogado ){
-       return <Redirect to="Login" noThrow/>
+       return <Redirect to="/login" noThrow/>
     }
     if(isAuthenticated() && estaLogado ){
        return <Redirect to={routeOutside[userRole]} noThrow/>

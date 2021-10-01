@@ -51,3 +51,9 @@ export const authRegister = (form) => {
         }
     }
 }
+
+export const setNewAuth = (data) => {
+    return  (dispatch) => {
+        dispatch({type: AUTH.setNewAuth, result: data})
+    }
+}

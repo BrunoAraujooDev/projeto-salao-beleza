@@ -16,6 +16,9 @@ const reducer = (state = INITIAL_STATE, action) => {
         case AUTH.loading:
             state.loading = action.result;
             return state;
+        case AUTH.setNewAuth:
+            state.auth = action.result;
+            return state;
             
         default:
             return state;
