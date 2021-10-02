@@ -10,3 +10,5 @@ export const createNewService = (data) => http.post(path, data);
 
 export const editNewService = ({id, ...data}) => http.put(`${path}/${id}`, data);
 
+export const deleteNewService = (id) => http.delete(`${path}/${id}`);
+

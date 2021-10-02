@@ -3,17 +3,21 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { Button, FormGroup, Input, Label, Table } from "reactstrap";
+import { Button, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Table } from "reactstrap";
 import styled from "styled-components";
-import { createService, editService } from "../../store/servico/action";
+import { createService, deleteService, editService } from "../../store/servico/action";
 
 const Salao = () => {
 
     const dispatch = useDispatch();
-    
+
     const usuario = useSelector(state => state.auth.auth.user);
     const [estado, setEstado] = useState(true);
-    const [servicos, setServicos] = useState({...usuario.servico});
+    const [servicos, setServicos] = useState({ ...usuario.servico });
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () =>
+        setModal(!modal);
 
     const handleChange = (event) => {
         const { files, value, name } = event.target;
@@ -21,8 +25,18 @@ const Salao = () => {
             ...servicos,
             [name]: files?.length > 0 ? files[0] : value,
         });
-        
+
     };
+
+
+    const handleDelete = () => {
+        dispatch(deleteService(servicos.id))
+            .then(() => {
+                toast.success(`Estabelecimento ${servicos.titulo} excluido com sucesso`);
+                toggleModal();
+            })
+            .catch((err) => console.log("##", err));
+    }
 
 
     const submit = () => {
@@ -36,18 +50,18 @@ const Salao = () => {
         if (usuario.servico) {
             dispatch(editService({ ...servicos, id: usuario.servico.id }))
                 .then(() => toast.success("Dados atualizados com sucesso!"))
-                setServicos({})
+            setServicos({})
             setEstado(!estado);
         } else {
 
             dispatch(createService({ ...servicos, user_id: usuario.id }))
                 .then(() => toast.success(`Estabelecimento ${servicos?.titulo} feito com sucesso!`));
-                setServicos({})
+            setServicos({})
             setEstado(!estado);
         }
     }
 
-    
+
     if (usuario.servico && estado) {
         return <>
             <Table dark>
@@ -77,12 +91,28 @@ const Salao = () => {
                         <td>
                             <Actions>
                                 <FaEdit title="editar" onClick={() => setEstado(!estado)} />
-                                <FaTrash title="excluir" className="text-danger" />
+                                <FaTrash title="excluir" className="text-danger" onClick={() => setModal(!modal)} />
                             </Actions>
                         </td>
                     </tr>
                 </tbody>
             </Table>
+            <Modal isOpen={modal} toggle={toggleModal}>
+                <ModalHeader className="text-danger" toggle={toggleModal}>
+                    ATENÇÃO
+                </ModalHeader>
+                <ModalBody>
+                    Deseja excluir o estabelecimento {servicos.titulo || null} ?
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="primary" onClick={handleDelete}>
+                        Sim
+                    </Button>{" "}
+                    <Button color="secondary" onClick={toggleModal}>
+                        Não
+                    </Button>
+                </ModalFooter>
+            </Modal>
         </>
     }
 

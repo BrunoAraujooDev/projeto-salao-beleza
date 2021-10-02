@@ -1,5 +1,5 @@
 import { saveUser } from "../../config/storage";
-import { callServices, createNewService, editNewService, getServiceById } from "../../services/servico.service"
+import { callServices, createNewService, deleteNewService, editNewService, getServiceById } from "../../services/servico.service"
 import { setNewAuth } from "../auth/action";
 import { SERVICOS } from "../types";
 
@@ -55,6 +55,14 @@ export const editService = (data) => {
 
         const result = await editNewService(data);
         // dispatch({type: CLIENT.create, client: result.data})
+        return result.data;
+    }
+}
+
+export const deleteService = (data) => {
+    return async(dispatch) => {
+
+        const result = await deleteNewService(data);
         return result.data;
     }
 }
