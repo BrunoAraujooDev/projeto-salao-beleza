@@ -55,7 +55,8 @@ const SCard = styled.div`
 
 
 const SCardImg = styled(CardImg)`
-  width: 30rem;
+  max-width: 20rem;
+  min-width: 20rem;
   height: auto;
 `;
 
